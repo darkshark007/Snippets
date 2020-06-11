@@ -31,61 +31,70 @@ function getNewBallotContext(config) {
 		'name': config.name || null,
 		'ballotChoices': config.choices || [],
 		'currentCandidate': null,
+		'candidateScores1': 0,
 	};
 }
 
 
 var ballots = [
-  getNewBallotContext({name: 'DH', choices: [pete, steyer, warren, biden, klobuchar]}),
-  getNewBallotContext({name: 'MB', choices: [biden, steyer, yang]}),
-  getNewBallotContext({name: 'JM', choices: [sanders]}),
-  getNewBallotContext({name: 'CB', choices: [sanders]}),
-  getNewBallotContext({name: 'BBH', choices: [pete, steyer, yang, biden, sanders]}),
-  getNewBallotContext({name: 'MP', choices: [sanders, gabbard, yang, chafee, hawkins]}),
-  getNewBallotContext({name: 'SF', choices: [pete]}),
-  getNewBallotContext({name: 'DS', choices: [pete, warren, yang]}),
-  getNewBallotContext({name: 'ES', choices: [klobuchar, pete, biden, warren, steyer, yang]}),
-  getNewBallotContext({name: 'ST', choices: [sanders, warren, yang]}),
-  getNewBallotContext({name: 'BF', choices: [pete, amy, patrick, bennet, biden]}),
-  getNewBallotContext({name: 'LR', choices: [warren]}),
-  getNewBallotContext({name: 'PB', choices: [pete, amy, bennet, warren, biden]}),
-  getNewBallotContext({name: 'CHII', choices: [pete, amy, steyer]}),
-  getNewBallotContext({name: 'AS', choices: [pete, klobuchar, biden]}),
-  getNewBallotContext({name: 'MC', choices: [pete, warren, bernie, biden, yang]}),
-  getNewBallotContext({name: 'JE', choices: [pete, amy, biden, warren, bennet]}),
-  getNewBallotContext({name: 'ME', choices: [warren, amy, pete]}),
-  getNewBallotContext({name: 'CMI', choices: [pete, warren, biden, bernie, klobuchar]}),
-  getNewBallotContext({name: 'SL', choices: [pete, bernie, warren, yang, klobuchar]}),
-  getNewBallotContext({name: 'DC', choices: [klobuchar, warren, steyer, pete, bloomberg]}),
-  getNewBallotContext({name: 'MK', choices: [sanders, warren, yang, klobuchar, biden]}),
-  getNewBallotContext({name: 'MMS', choices: [sanders, yang]}),
-  getNewBallotContext({name: 'DL', choices: [biden, warren, bloomberg, klobuchar, pete]}),
-  getNewBallotContext({name: 'CK', choices: [biden, warren, pete, bullock, bernie]}),
-  getNewBallotContext({name: 'AR', choices: [bernie, warren, yang, steyer, klobuchar, biden, bloomberg, pete]}),
-  getNewBallotContext({name: 'CM', choices: [bernie]}),
-  getNewBallotContext({name: 'TS', choices: [sanders, warren]}),
-  getNewBallotContext({name: 'JM', choices: [bernie, warren, harris, booker, yang]}),
-  getNewBallotContext({name: 'JC', choices: [warren]}),
-  getNewBallotContext({name: 'JM', choices: [sanders, warren, yang, amy, biden]}),
-  getNewBallotContext({name: 'SSP', choices: [sanders, warren, pete, tulsi, oprah]}),
-  getNewBallotContext({name: 'CWK', choices: [sanders, warren, yang]}),
-  getNewBallotContext({name: 'SSP', choices: [brown, carter, jackson, kennedy, wellstone]}),
-  getNewBallotContext({name: 'RMN ', choices: [klobuchar, biden, warren, steyer, pete]}),
-  getNewBallotContext({name: 'WK', choices: [amy, steyer, klobuchar]}),
-  getNewBallotContext({name: 'JH', choices: [bernie]}),
-  getNewBallotContext({name: 'MH', choices: [warren, sanders, biden, klobuchar, pete]}),
-  getNewBallotContext({name: 'WK', choices: [pete, steyer, warren, biden, klobuchar, yang, gabbard, bloomberg, bernie]}),
-  getNewBallotContext({name: 'RT', choices: [pete, steyer, warren, klobuchar, biden, sanders]}),
-  getNewBallotContext({name: 'SM', choices: [pete, klobuchar, warren, steyer, sanders, biden]}),
-  getNewBallotContext({name: 'GMS', choices: [sanders, warren, klobuchar, pete, steyer]}),
-  getNewBallotContext({name: 'SY', choices: [pete, klobuchar, warren]}),
-  getNewBallotContext({name: 'SB', choices: [gabbard, bernie, yang, chafee]}),
-  getNewBallotContext({name: 'DB', choices: [yang, bernie, warren, pete, delaney]}),
-  getNewBallotContext({name: 'ZJ', choices: [warren, steyer, pete, biden, bernie]}),
-  getNewBallotContext({name: 'MW', choices: [pete, warren, klobuchar, biden, sanders]}),
-  getNewBallotContext({name: 'PAF', choices: [bernie, yang, warren, steyer, klobuchar]}),
-  getNewBallotContext({name: 'KG', choices: [pete, patrick, klobuchar, bennet, biden]}),
-  getNewBallotContext({name: 'SB', choices: [pete]}),
+  // Example Simulation from discussion with Caleb
+  getNewBallotContext({name: 'Person 1', choices: [biden]}),
+  getNewBallotContext({name: 'Person 2', choices: [biden]}),
+  getNewBallotContext({name: 'Person 3', choices: [bernie]}),
+  getNewBallotContext({name: 'Person 4', choices: [bernie, pete, warren, steyer, klobuchar, yang, gabbard, bloomberg, biden]}),
+
+  // Example Simulation from Dakota's FB Post
+  // getNewBallotContext({name: 'DH', choices: [pete, steyer, warren, biden, klobuchar]}),
+  // getNewBallotContext({name: 'MB', choices: [biden, steyer, yang]}),
+  // getNewBallotContext({name: 'JM', choices: [sanders]}),
+  // getNewBallotContext({name: 'CB', choices: [sanders]}),
+  // getNewBallotContext({name: 'BBH', choices: [pete, steyer, yang, biden, sanders]}),
+  // getNewBallotContext({name: 'MP', choices: [sanders, gabbard, yang, chafee, hawkins]}),
+  // getNewBallotContext({name: 'SF', choices: [pete]}),
+  // getNewBallotContext({name: 'DS', choices: [pete, warren, yang]}),
+  // getNewBallotContext({name: 'ES', choices: [klobuchar, pete, biden, warren, steyer, yang]}),
+  // getNewBallotContext({name: 'ST', choices: [sanders, warren, yang]}),
+  // getNewBallotContext({name: 'BF', choices: [pete, amy, patrick, bennet, biden]}),
+  // getNewBallotContext({name: 'LR', choices: [warren]}),
+  // getNewBallotContext({name: 'PB', choices: [pete, amy, bennet, warren, biden]}),
+  // getNewBallotContext({name: 'CHII', choices: [pete, amy, steyer]}),
+  // getNewBallotContext({name: 'AS', choices: [pete, klobuchar, biden]}),
+  // getNewBallotContext({name: 'MC', choices: [pete, warren, bernie, biden, yang]}),
+  // getNewBallotContext({name: 'JE', choices: [pete, amy, biden, warren, bennet]}),
+  // getNewBallotContext({name: 'ME', choices: [warren, amy, pete]}),
+  // getNewBallotContext({name: 'CMI', choices: [pete, warren, biden, bernie, klobuchar]}),
+  // getNewBallotContext({name: 'SL', choices: [pete, bernie, warren, yang, klobuchar]}),
+  // getNewBallotContext({name: 'DC', choices: [klobuchar, warren, steyer, pete, bloomberg]}),
+  // getNewBallotContext({name: 'MK', choices: [sanders, warren, yang, klobuchar, biden]}),
+  // getNewBallotContext({name: 'MMS', choices: [sanders, yang]}),
+  // getNewBallotContext({name: 'DL', choices: [biden, warren, bloomberg, klobuchar, pete]}),
+  // getNewBallotContext({name: 'CK', choices: [biden, warren, pete, bullock, bernie]}),
+  // getNewBallotContext({name: 'AR', choices: [bernie, warren, yang, steyer, klobuchar, biden, bloomberg, pete]}),
+  // getNewBallotContext({name: 'CM', choices: [bernie]}),
+  // getNewBallotContext({name: 'TS', choices: [sanders, warren]}),
+  // getNewBallotContext({name: 'JM', choices: [bernie, warren, harris, booker, yang]}),
+  // getNewBallotContext({name: 'JC', choices: [warren]}),
+  // getNewBallotContext({name: 'JM', choices: [sanders, warren, yang, amy, biden]}),
+  // getNewBallotContext({name: 'SSP', choices: [sanders, warren, pete, tulsi, oprah]}),
+  // getNewBallotContext({name: 'CWK', choices: [sanders, warren, yang]}),
+  // getNewBallotContext({name: 'SSP', choices: [brown, carter, jackson, kennedy, wellstone]}),
+  // getNewBallotContext({name: 'RMN ', choices: [klobuchar, biden, warren, steyer, pete]}),
+  // getNewBallotContext({name: 'WK', choices: [amy, steyer, klobuchar]}),
+  // getNewBallotContext({name: 'JH', choices: [bernie]}),
+  // getNewBallotContext({name: 'MH', choices: [warren, sanders, biden, klobuchar, pete]}),
+  // getNewBallotContext({name: 'WK', choices: [pete, steyer, warren, biden, klobuchar, yang, gabbard, bloomberg, bernie]}),
+  // getNewBallotContext({name: 'RT', choices: [pete, steyer, warren, klobuchar, biden, sanders]}),
+  // getNewBallotContext({name: 'SM', choices: [pete, klobuchar, warren, steyer, sanders, biden]}),
+  // getNewBallotContext({name: 'GMS', choices: [sanders, warren, klobuchar, pete, steyer]}),
+  // getNewBallotContext({name: 'SY', choices: [pete, klobuchar, warren]}),
+  // getNewBallotContext({name: 'SB', choices: [gabbard, bernie, yang, chafee]}),
+  // getNewBallotContext({name: 'DB', choices: [yang, bernie, warren, pete, delaney]}),
+  // getNewBallotContext({name: 'ZJ', choices: [warren, steyer, pete, biden, bernie]}),
+  // getNewBallotContext({name: 'MW', choices: [pete, warren, klobuchar, biden, sanders]}),
+  // getNewBallotContext({name: 'PAF', choices: [bernie, yang, warren, steyer, klobuchar]}),
+  // getNewBallotContext({name: 'KG', choices: [pete, patrick, klobuchar, bennet, biden]}),
+  // getNewBallotContext({name: 'SB', choices: [pete]}),
+
 
   // getNewBallotContext({name: '', choices: []}),
 ];
@@ -96,6 +105,7 @@ function processBallots(ballots) {
 	var resultContext = {
 		'simpleMajority': simpleMajority,
 		'rounds': {},
+		'ballots': ballots,
 	};
 
 	var voteSwitches = {};
@@ -128,6 +138,7 @@ function processBallots(ballots) {
 			var score1 = (1/(choiceIdx+2));
 			candidateScores1[option] += score1;
 			candidateScores1['__TOTAL'] += score1;
+			currentBallot.candidateScores1 += score1;
 
 			// Calculate Candidate Score #2 -- Score gives each ballot exactly one point of weight, 
 			// distributed in progressively halfing value (4/7, 2/7, 1/7, for 3 candidates, etc).  However,
@@ -140,6 +151,12 @@ function processBallots(ballots) {
 			var score2 = numerator/denominator;
 			candidateScores2[option] += score2;
 			candidateScores2['__TOTAL'] += score2; // SO MUCH ROUNDING ERROR ACCUMULATION!!
+
+			// TODO: Calculate Candidate Score #3 -- Like score #1, but all un-listed candidates on the ballot get score equivalent to being last place on the ballot
+
+			// TODO: Calculate Candidate Score #4 -- Like score #1, but all un-listed candidates on the ballot get score equivalent to un-allocated portion of total potential score divided amongst all unlisted candidates
+
+			// TODO: Calculate Candidate Score #5 -- Like score #3, but last place on the ballot is worth 0 points (therefore all unlisted candidates implicitly get last-place score)
 		}
 	}
 	candidatesList.sort();
