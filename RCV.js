@@ -73,7 +73,7 @@ function getNewBallotContext(config) {
 
 	var ballots = [
 		getNewBallotContext({name: 'Stephen', choices: [solzhenitsyn,hayek,rushkoff,nours,robinson,stiglitz,bastiat,hazlitt,wheelan,sowell]}),
-		// getNewBallotContext({name: 'Andrew', choices: []}),
+		getNewBallotContext({name: 'Andrew', choices: [hayek,hazlitt,bastiat]}),
 		getNewBallotContext({name: 'Wade', choices: [robinson,nours,stiglitz,rushkoff,hayek,solzhenitsyn,bastiat,hazlitt,wheelan,sowell]}),
 		getNewBallotContext({name: 'Will', choices: [hayek, rushkoff, robinson]}),
 	];
